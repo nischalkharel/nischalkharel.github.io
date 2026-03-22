@@ -7,19 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAFAF8;
+    --bg: #F5F5F2;
     --surface: #FFFFFF;
+    --card: #FBFBF9;
     --text: #1A1A1A;
     --text-secondary: #5A5A5A;
     --accent: #003594;
     --accent-light: #E8EDF5;
     --gold: #CDB87D;
-    --border: #E8E8E4;
+    --border: #DDDDD8;
     --radius: 10px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -33,9 +33,8 @@
   /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(250,250,248,0.92);
+    top: 0; width: 100%;
+    background: rgba(245,245,242,0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
@@ -43,568 +42,277 @@
     padding: 0 2rem;
   }
   nav .inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
     height: 60px;
   }
   nav .logo {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
+    font-size: 1.15rem; color: var(--text);
+    text-decoration: none; letter-spacing: -0.02em;
   }
   nav .links { display: flex; gap: 1.8rem; }
   nav .links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    transition: color 0.2s;
+    font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em;
+    transition: color 0.2s; cursor: pointer;
   }
   nav .links a:hover { color: var(--accent); }
 
   /* ── HERO ── */
   .hero {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 140px 2rem 80px;
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 60px;
-    align-items: center;
+    max-width: 1100px; margin: 0 auto;
+    padding: 130px 2rem 50px;
+    display: grid; grid-template-columns: 1fr 240px;
+    gap: 50px; align-items: center;
   }
   .hero-text h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: 3.2rem;
-    line-height: 1.12;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.2rem;
+    font-size: 3rem; line-height: 1.12;
+    letter-spacing: -0.03em; margin-bottom: 1rem;
   }
   .hero-text h1 span { color: var(--accent); }
   .hero-text p {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    max-width: 540px;
-    margin-bottom: 1.6rem;
+    font-size: 1rem; color: var(--text-secondary);
+    max-width: 540px; margin-bottom: 1.4rem;
   }
-  .hero-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .hero-links { display: flex; gap: 0.7rem; flex-wrap: wrap; }
   .hero-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.8rem; font-weight: 500; padding: 7px 15px;
+    border-radius: 100px; text-decoration: none; transition: all 0.2s; cursor: pointer;
   }
-  .hero-links a.primary {
-    background: var(--accent);
-    color: #fff;
-  }
+  .hero-links a.primary { background: var(--accent); color: #fff; }
   .hero-links a.primary:hover { background: #00254a; }
   .hero-links a.secondary {
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: var(--surface);
+    border: 1px solid var(--border); color: var(--text-secondary); background: var(--surface);
   }
-  .hero-links a.secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .hero-links a.secondary:hover { border-color: var(--accent); color: var(--accent); }
   .hero-photo {
-    width: 280px;
-    height: 340px;
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
+    width: 240px; height: 300px; border-radius: var(--radius);
+    overflow: hidden; position: relative;
   }
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .hero-photo::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
-    border: 1px solid rgba(0,0,0,0.06);
-  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* ── SECTION LAYOUT ── */
-  section { padding: 60px 2rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
+  /* ── TABS ── */
+  .tabs-wrapper {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 2rem 60px;
+  }
+  .tab-bar {
+    display: flex; gap: 0; border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 12px 20px; border: none; background: none;
+    cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--accent); }
+  .tab-btn.active {
+    color: var(--accent); border-bottom-color: var(--accent);
+  }
+  .tab-panel { display: none; animation: fadeIn 0.3s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
+  /* ── SECTION HEADERS ── */
   .section-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.4rem;
   }
   .section-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    letter-spacing: -0.02em;
-    margin-bottom: 2.5rem;
+    font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 2rem;
   }
 
   /* ── TIMELINE ── */
   .timeline { position: relative; }
   .timeline::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 8px;
-    bottom: 8px;
-    width: 2px;
-    background: var(--border);
+    content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--border);
   }
-
-  .timeline-item {
-    position: relative;
-    padding-left: 52px;
-    margin-bottom: 3.5rem;
-  }
+  .timeline-item { position: relative; padding-left: 52px; margin-bottom: 2.5rem; }
   .timeline-item:last-child { margin-bottom: 0; }
-
   .timeline-dot {
-    position: absolute;
-    left: 8px;
-    top: 8px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 3px solid var(--accent);
-    z-index: 1;
+    position: absolute; left: 8px; top: 8px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--surface);
+    border: 3px solid var(--accent); z-index: 1;
   }
   .timeline-item.active .timeline-dot {
-    background: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-light);
+    background: var(--accent); box-shadow: 0 0 0 4px var(--accent-light);
   }
-
   .timeline-date {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;
   }
 
+  /* ── CARDS ── */
   .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     transition: box-shadow 0.25s, border-color 0.25s;
   }
   .project-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-    border-color: #d0d0cc;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07); border-color: #ccccc8;
   }
-
-  .project-body { padding: 1.8rem; }
+  .project-body { padding: 1.6rem; }
   .project-body h3 {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
+    font-size: 1.25rem; margin-bottom: 0.4rem; letter-spacing: -0.01em;
   }
-  .project-body .subtitle {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-  }
-  .project-body p {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-  }
+  .project-body .subtitle { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+  .project-body p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
 
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.8rem; }
   .tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: var(--accent-light);
-    color: var(--accent);
-    letter-spacing: 0.02em;
+    font-size: 0.68rem; font-weight: 600; padding: 3px 9px;
+    border-radius: 100px; background: var(--accent-light);
+    color: var(--accent); letter-spacing: 0.02em;
   }
-
-  .project-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .project-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .project-links a {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 5px 12px;
-    border: 1px solid var(--accent);
-    border-radius: 100px;
-    transition: all 0.2s;
+    font-size: 0.76rem; font-weight: 500; color: var(--accent);
+    text-decoration: none; padding: 4px 11px;
+    border: 1px solid var(--accent); border-radius: 100px; transition: all 0.2s;
   }
-  .project-links a:hover {
-    background: var(--accent);
-    color: #fff;
-  }
+  .project-links a:hover { background: var(--accent); color: #fff; }
 
-  /* ── VIDEO EMBED ── */
+  /* ── VIDEO ── */
   .video-container {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    background: #000;
-    border-bottom: 1px solid var(--border);
+    position: relative; width: 100%; padding-top: 56.25%;
+    background: #000; border-bottom: 1px solid var(--border);
   }
   .video-container iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+    position: absolute; inset: 0; width: 100%; height: 100%; border: none;
   }
 
   /* ── PRESS CAROUSEL ── */
-  .press-label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-top: 0.8rem;
-    margin-bottom: 0.6rem;
-  }
-  .press-carousel-wrapper {
-    position: relative;
-  }
+  .press-label { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-top: 0.6rem; margin-bottom: 0.5rem; }
   .press-carousel {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
-    scrollbar-width: none;
+    display: flex; gap: 12px; overflow-x: auto;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; scrollbar-width: none;
   }
   .press-carousel::-webkit-scrollbar { display: none; }
-
   .press-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    text-decoration: none;
-    color: var(--text);
+    flex: 0 0 260px; scroll-snap-align: start;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; text-decoration: none; color: var(--text);
     transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
   }
-  .press-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 20px rgba(0,53,148,0.08);
-    transform: translateY(-2px);
-  }
-  .press-card-img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    display: block;
-    background: var(--accent-light);
-  }
-  .press-card-body { padding: 12px 14px; }
-  .press-card-source {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-  .press-card-title {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .press-card-arrow {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 8px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--accent);
-  }
-
-  .carousel-nav {
-    display: flex;
-    gap: 6px;
-    justify-content: flex-end;
-    margin-top: 8px;
-  }
+  .press-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,53,148,0.08); transform: translateY(-2px); }
+  .press-card-img { width: 100%; height: 140px; object-fit: cover; display: block; background: var(--accent-light); }
+  .press-card-body { padding: 10px 12px; }
+  .press-card-source { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 3px; }
+  .press-card-title { font-size: 0.78rem; font-weight: 500; color: var(--text); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .press-card-arrow { display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 0.7rem; font-weight: 600; color: var(--accent); }
+  .carousel-nav { display: flex; gap: 6px; justify-content: flex-end; margin-top: 6px; }
   .carousel-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: var(--text-secondary);
-    transition: all 0.2s;
+    width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--surface); cursor: pointer; display: flex; align-items: center;
+    justify-content: center; font-size: 1rem; color: var(--text-secondary); transition: all 0.2s;
   }
-  .carousel-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ── SKILLS TABLE ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
-  }
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
   .skill-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.3rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     transition: box-shadow 0.25s;
   }
-  .skill-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
-  .skill-card h4 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.7rem;
+  .skill-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+  .skill-card h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.6rem; }
+  .skill-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── COURSEWORK ── */
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .course-group {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.3rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
-  .skill-card p {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+  .course-group h4 {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.7rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+  }
+  .course-item { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
+  .course-name { font-size: 0.82rem; color: var(--text); font-weight: 500; }
+  .course-code { font-size: 0.7rem; color: var(--text-secondary); font-weight: 500; white-space: nowrap; margin-left: 10px; }
+  .course-grad {
+    display: inline-block; font-size: 0.6rem; font-weight: 700;
+    padding: 2px 5px; border-radius: 4px; background: var(--accent-light);
+    color: var(--accent); margin-left: 4px; vertical-align: middle;
   }
 
-  /* ── CONTACT ── */
-  .contact-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-  }
+  /* ── CONTACT ROW ── */
+  .contact-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
   .contact-row a {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 1px solid var(--accent);
-    border-radius: 100px;
-    transition: all 0.2s;
+    font-size: 0.82rem; font-weight: 500; color: var(--accent);
+    text-decoration: none; padding: 8px 18px;
+    border: 1px solid var(--accent); border-radius: 100px; transition: all 0.2s; cursor: pointer;
   }
-  .contact-row a:hover {
-    background: var(--accent);
-    color: #fff;
+  .contact-row a:hover { background: var(--accent); color: #fff; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center;
   }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 2rem 2.2rem; max-width: 420px; width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: modalIn 0.25s ease; position: relative;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .modal-box h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .modal-box .modal-sub { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1.2rem; }
+  .modal-email-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .modal-email-row:last-child { border-bottom: none; }
+  .modal-email-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 2px; }
+  .modal-email-addr { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+  .modal-copy-btn {
+    font-size: 0.7rem; font-weight: 600; padding: 4px 11px; border-radius: 100px;
+    border: 1px solid var(--border); background: var(--card); color: var(--text-secondary);
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .modal-copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .modal-close {
+    position: absolute; top: 12px; right: 14px; width: 28px; height: 28px;
+    border-radius: 50%; border: none; background: var(--card);
+    color: var(--text-secondary); font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .modal-close:hover { background: var(--accent-light); color: var(--accent); }
 
   /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border);
-    margin-top: 2rem;
-  }
+  footer { text-align: center; padding: 1.5rem; font-size: 0.76rem; color: var(--text-secondary); border-top: 1px solid var(--border); margin-top: 1rem; }
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      padding: 120px 1.5rem 50px;
-    }
-    .hero-photo {
-      width: 200px;
-      height: 240px;
-      order: -1;
-    }
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 110px 1.5rem 40px; }
+    .hero-photo { width: 180px; height: 220px; order: -1; }
     .hero-text h1 { font-size: 2.2rem; }
-    nav .links { gap: 1rem; }
-    nav .links a { font-size: 0.72rem; }
-    section { padding: 40px 1.5rem; }
-    .section-title { font-size: 1.6rem; }
+    .tabs-wrapper { padding: 0 1.5rem 40px; }
+    .tab-btn { padding: 10px 14px; font-size: 0.74rem; }
   }
-
   @media (max-width: 500px) {
     nav .links { display: none; }
     .hero-text h1 { font-size: 1.8rem; }
+    .tab-btn { padding: 10px 12px; font-size: 0.7rem; }
   }
-  /* ── COURSEWORK ── */
-  .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.4rem;
-  }
-  .course-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-  }
-  .course-group h4 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.9rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .course-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 5px 0;
-  }
-  .course-name {
-    font-size: 0.85rem;
-    color: var(--text);
-    font-weight: 500;
-  }
-  .course-code {
-    font-size: 0.72rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-family: 'DM Sans', monospace;
-    white-space: nowrap;
-    margin-left: 12px;
-  }
-  .course-grad {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: var(--accent-light);
-    color: var(--accent);
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-
-  /* ── CONTACT MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    align-items: center;
-    justify-content: center;
-  }
-  .modal-overlay.active { display: flex; }
-
-  .modal-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 2.2rem 2.5rem;
-    max-width: 420px;
-    width: 90%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    animation: modalIn 0.25s ease;
-    position: relative;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(16px) scale(0.97); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .modal-box h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    margin-bottom: 0.3rem;
-  }
-  .modal-box .modal-sub {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.4rem;
-  }
-  .modal-email-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .modal-email-row:last-child { border-bottom: none; }
-  .modal-email-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 2px;
-  }
-  .modal-email-addr {
-    font-size: 0.9rem;
-    color: var(--text);
-    font-weight: 500;
-  }
-  .modal-copy-btn {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .modal-copy-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .modal-close {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: none;
-    background: var(--bg);
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-  .modal-close:hover { background: var(--accent-light); color: var(--accent); }
 </style>
 </head>
 <body>
@@ -614,9 +322,11 @@
   <div class="inner">
     <a href="#" class="logo">Nischal Kharel</a>
     <div class="links">
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a onclick="switchTab('projects')">Projects</a>
+      <a onclick="switchTab('skills')">Skills</a>
+      <a onclick="switchTab('coursework')">Courses</a>
+      <a onclick="switchTab('education')">Education</a>
+      <a onclick="switchTab('contact')">Contact</a>
     </div>
   </div>
 </nav>
@@ -625,9 +335,9 @@
 <header class="hero">
   <div class="hero-text">
     <h1>Researcher, Engineer, <span>Builder.</span></h1>
-    <p>Ph.D. student in Electrical & Computer Engineering at the University of Pittsburgh. Graduate Research Assistant at the NSF SHREC Center, working on dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
+    <p>Ph.D. student in Electrical &amp; Computer Engineering at the University of Pittsburgh. Graduate Research Assistant at the NSF SHREC Center, working on dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
     <div class="hero-links">
-      <a href="#" onclick="document.getElementById('contactModal').classList.add('active');return false;" class="primary">Get in Touch</a>
+      <a onclick="document.getElementById('contactModal').classList.add('active')" class="primary">Get in Touch</a>
       <a href="https://github.com/nischalkharel" class="secondary" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/nischalkharel/" class="secondary" target="_blank">LinkedIn</a>
       <a href="https://www.nsf-shrec.org/people/nischal-kharel" class="secondary" target="_blank">SHREC Profile</a>
@@ -638,15 +348,21 @@
   </div>
 </header>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="section-label">Work</div>
-    <h2 class="section-title">Projects</h2>
+<!-- TABS -->
+<div class="tabs-wrapper">
 
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('projects')">Projects</button>
+    <button class="tab-btn" onclick="switchTab('skills')">Skills</button>
+    <button class="tab-btn" onclick="switchTab('coursework')">Coursework</button>
+    <button class="tab-btn" onclick="switchTab('education')">Education &amp; Experience</button>
+    <button class="tab-btn" onclick="switchTab('contact')">Contact</button>
+  </div>
+
+  <!-- ════════════ PROJECTS TAB ════════════ -->
+  <div class="tab-panel active" id="tab-projects">
     <div class="timeline">
 
-      <!-- ═══ CURRENT: RemoteCLIP ═══ -->
       <div class="timeline-item active">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Spring 2026 — Present</div>
@@ -654,16 +370,11 @@
           <div class="project-body">
             <h3>RemoteCLIP Video Retrieval Pipeline</h3>
             <div class="subtitle">Graduate Research — NSF SHREC Center</div>
-            <p>High-performance text-based video retrieval system for satellite and remote sensing footage. Built a parallel C++ embedding pipeline using LibTorch and OpenMP with a producer-consumer architecture, and benchmarked brute-force kNN retrieval across serial CPU, parallel CPU (OpenMP), and GPU (cuBLAS) backends. Key findings include NUMA-aware scaling achieving ~38× speedup, GPU warm search ~185× faster than serial, and a publishable result showing GPU cold-start end-to-end is slower than CPU serial due to CUDA initialization and PCIe overhead — significant for latency-sensitive edge and space deployments. GSI Gemini II APU benchmarking is currently in progress.</p>
+            <p>High-performance text-based video retrieval system for satellite and remote sensing footage. Built a parallel C++ embedding pipeline using LibTorch and OpenMP with a producer-consumer architecture, and benchmarked brute-force kNN retrieval across serial CPU, parallel CPU (OpenMP), and GPU (cuBLAS) backends. Key findings include NUMA-aware scaling achieving ~38x speedup, GPU warm search ~185x faster than serial, and GPU cold-start end-to-end slower than CPU serial due to CUDA init and PCIe overhead. GSI Gemini II APU benchmarking in progress.</p>
             <div class="tags">
-              <span class="tag">C++</span>
-              <span class="tag">LibTorch</span>
-              <span class="tag">OpenMP</span>
-              <span class="tag">CUDA</span>
-              <span class="tag">cuBLAS</span>
-              <span class="tag">Python</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">HPC</span>
+              <span class="tag">C++</span><span class="tag">LibTorch</span><span class="tag">OpenMP</span>
+              <span class="tag">CUDA</span><span class="tag">cuBLAS</span><span class="tag">Python</span>
+              <span class="tag">PyTorch</span><span class="tag">HPC</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/nischalkharel/VideoRetrievalWithRemoteCLIP/tree/RemoteCLIP_Initial_try" target="_blank">GitHub</a>
@@ -672,23 +383,18 @@
         </div>
       </div>
 
-      <!-- ═══ CURRENT: Adaptive Compression ═══ -->
       <div class="timeline-item active">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Spring 2026 — Present</div>
         <div class="project-card">
           <div class="project-body">
             <h3>Class-Adaptive Satellite Image Compression on FPGA</h3>
-            <div class="subtitle">Graduate Research — NSF SHREC Center · Targeting SCC Conference</div>
-            <p>Developing a class-adaptive and confidence-adaptive compression pipeline for satellite imagery on the Xilinx ZCU102 FPGA. The system tiles satellite images, classifies each tile by land-cover type using a CNN (NWPU-RESISC7), then assigns per-tile CNNJPEG quality factors based on each class's compression tolerance — rather than using a single fixed quality for the entire image. The approach aims to save significant bandwidth while maintaining classification stability, with a reusable five-step calibration methodology applicable to any CNN classifier and quality-parameterized compressor. Work in progress.</p>
+            <div class="subtitle">Graduate Research — NSF SHREC Center &middot; Targeting SCC Conference</div>
+            <p>Developing a class-adaptive and confidence-adaptive compression pipeline for satellite imagery on the Xilinx ZCU102 FPGA. The system tiles satellite images, classifies each tile by land-cover type using a CNN (NWPU-RESISC7), then assigns per-tile CNNJPEG quality factors based on each class's compression tolerance rather than using a single fixed quality for the entire image. The approach aims to save significant bandwidth while maintaining classification stability, with a reusable five-step calibration methodology. Work in progress.</p>
             <div class="tags">
-              <span class="tag">FPGA</span>
-              <span class="tag">Xilinx ZCU102</span>
-              <span class="tag">CNNJPEG</span>
-              <span class="tag">CNN Classification</span>
-              <span class="tag">Satellite Imagery</span>
-              <span class="tag">Python</span>
-              <span class="tag">Docker</span>
+              <span class="tag">FPGA</span><span class="tag">Xilinx ZCU102</span><span class="tag">CNNJPEG</span>
+              <span class="tag">CNN Classification</span><span class="tag">Satellite Imagery</span>
+              <span class="tag">Python</span><span class="tag">Docker</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/nischalkharel/3998_Spring2026" target="_blank">GitHub</a>
@@ -697,7 +403,6 @@
         </div>
       </div>
 
-      <!-- ═══ FALL 2025: Fault Tolerance ═══ -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Fall 2025</div>
@@ -705,12 +410,10 @@
           <div class="project-body">
             <h3>Fault Tolerance for GPU-Accelerated Neural Networks in Space</h3>
             <div class="subtitle">Graduate Research — NSF SHREC Center</div>
-            <p>Evaluated software fault tolerance techniques — Triple Modular Redundancy (TMR), Dual+Retry, and Algorithm-Based Fault Tolerance (ABFT) — for neural networks on NVIDIA Jetson hardware targeting space radiation environments. Used PyTorchFI for fault injection after NVBitFI proved incompatible with SM_87 architecture. Key finding: Dual+Retry achieved 0% silent data corruption with 34% better efficiency than TMR. Co-authored a paper on the results.</p>
+            <p>Evaluated software fault tolerance techniques — Triple Modular Redundancy (TMR), Dual+Retry, and Algorithm-Based Fault Tolerance (ABFT) — for neural networks on NVIDIA Jetson hardware targeting space radiation environments. Used PyTorchFI for fault injection after NVBitFI proved incompatible with SM_87 architecture. Key finding: Dual+Retry achieved 0% silent data corruption with 34% better efficiency than TMR.</p>
             <div class="tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">NVIDIA Jetson</span>
-              <span class="tag">Fault Injection</span>
-              <span class="tag">PyTorchFI</span>
+              <span class="tag">PyTorch</span><span class="tag">NVIDIA Jetson</span>
+              <span class="tag">Fault Injection</span><span class="tag">PyTorchFI</span>
               <span class="tag">Space Computing</span>
             </div>
             <div class="project-links">
@@ -721,7 +424,6 @@
         </div>
       </div>
 
-      <!-- ═══ LINUSS ═══ -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Spring 2025 — 2026</div>
@@ -729,90 +431,68 @@
           <div class="project-body">
             <h3>CNNJPEG on LM LINUSS CubeSat</h3>
             <div class="subtitle">NSF SHREC Center &times; Lockheed Martin</div>
-            <p>Optimized a CNN-based image compression model (CNNJPEG) for the Xilinx ZCU102 FPGA under severe memory constraints, implementing dynamic tiling and quantization to maintain 20× compression while reducing memory usage by 70%. Collaborated with Lockheed Martin to package and deploy the application to the LM LINUSS CubeSat in geosynchronous orbit, 22,236 miles above Earth. As of 2026, the application has been successfully tested on the actual LINUSS satellite in orbit.</p>
+            <p>Optimized a CNN-based image compression model (CNNJPEG) for the Xilinx ZCU102 FPGA under severe memory constraints, implementing dynamic tiling and quantization to maintain 20x compression while reducing memory usage by 70%. Collaborated with Lockheed Martin to deploy the application to the LM LINUSS CubeSat in geosynchronous orbit, 22,236 miles above Earth. As of 2026, the application has been successfully tested on the actual LINUSS satellite in orbit.</p>
             <div class="tags">
-              <span class="tag">FPGA</span>
-              <span class="tag">Xilinx ZCU102</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">SmartSat SDK</span>
-              <span class="tag">VHDL</span>
-              <span class="tag">Lockheed Martin</span>
+              <span class="tag">FPGA</span><span class="tag">Xilinx ZCU102</span><span class="tag">PyTorch</span>
+              <span class="tag">SmartSat SDK</span><span class="tag">VHDL</span><span class="tag">Lockheed Martin</span>
             </div>
-
             <p class="press-label">Press Coverage</p>
-            <div class="press-carousel-wrapper">
-              <div class="press-carousel" id="pressCarousel">
-
-                <a class="press-card" href="https://news.engineering.pitt.edu/an-out-of-this-world-opportunity/" target="_blank">
-                  <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="SHREC team in lab" />
-                  <div class="press-card-body">
-                    <div class="press-card-source">Pitt Engineering</div>
-                    <div class="press-card-title">An Out of This World Opportunity — For the first time, two undergraduate Pitt engineering students develop and deploy applications on a satellite in geosynchronous orbit</div>
-                    <div class="press-card-arrow">Read article →</div>
-                  </div>
-                </a>
-
-                <a class="press-card" href="https://news.ssbcrack.com/university-of-pittsburgh-students-successfully-deploy-applications-to-geosynchronous-satellite-22236-miles-above-earth/" target="_blank">
-                  <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="Satellite deployment article" />
-                  <div class="press-card-body">
-                    <div class="press-card-source">SSBCrack News</div>
-                    <div class="press-card-title">University of Pittsburgh Students Successfully Deploy Applications to Geosynchronous Satellite 22,236 Miles Above Earth</div>
-                    <div class="press-card-arrow">Read article →</div>
-                  </div>
-                </a>
-
-                <a class="press-card" href="https://www.linkedin.com/posts/pittengineering_amazing-space-engineering-research-in-action-activity-7378415869246218242-g8la/" target="_blank">
-                  <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="Pitt Engineering LinkedIn post" />
-                  <div class="press-card-body">
-                    <div class="press-card-source">LinkedIn — Pitt Engineering</div>
-                    <div class="press-card-title">"Amazing space engineering research in action" — Pitt Swanson School of Engineering highlights SHREC satellite deployment</div>
-                    <div class="press-card-arrow">View post →</div>
-                  </div>
-                </a>
-
-                <a class="press-card" href="https://www.ceidizleme.org/haberler/lisans-ogrencileri-yeryuzundeki-22-236-mil-yukarisinda-jeosenkron-uyduya-basvurular-konuslandiriyor/" target="_blank">
-                  <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="CEİD article" />
-                  <div class="press-card-body">
-                    <div class="press-card-source">CEİD — Turkish Coverage</div>
-                    <div class="press-card-title">Lisans öğrencileri, yeryüzündeki 22.236 mil yukarısında jeosenkron uyduya başvurular konuşlandırıyor</div>
-                    <div class="press-card-arrow">Read article →</div>
-                  </div>
-                </a>
-
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:-300,behavior:'smooth'})" aria-label="Scroll left">‹</button>
-                <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:300,behavior:'smooth'})" aria-label="Scroll right">›</button>
-              </div>
+            <div class="press-carousel" id="pressCarousel">
+              <a class="press-card" href="https://news.engineering.pitt.edu/an-out-of-this-world-opportunity/" target="_blank">
+                <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="SHREC team" />
+                <div class="press-card-body">
+                  <div class="press-card-source">Pitt Engineering</div>
+                  <div class="press-card-title">An Out of This World Opportunity — Two undergraduate Pitt engineering students develop and deploy applications on a satellite in geosynchronous orbit</div>
+                  <div class="press-card-arrow">Read article &rarr;</div>
+                </div>
+              </a>
+              <a class="press-card" href="https://news.ssbcrack.com/university-of-pittsburgh-students-successfully-deploy-applications-to-geosynchronous-satellite-22236-miles-above-earth/" target="_blank">
+                <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="Satellite article" />
+                <div class="press-card-body">
+                  <div class="press-card-source">SSBCrack News</div>
+                  <div class="press-card-title">University of Pittsburgh Students Successfully Deploy Applications to Geosynchronous Satellite 22,236 Miles Above Earth</div>
+                  <div class="press-card-arrow">Read article &rarr;</div>
+                </div>
+              </a>
+              <a class="press-card" href="https://www.linkedin.com/posts/pittengineering_amazing-space-engineering-research-in-action-activity-7378415869246218242-g8la/" target="_blank">
+                <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="LinkedIn post" />
+                <div class="press-card-body">
+                  <div class="press-card-source">LinkedIn — Pitt Engineering</div>
+                  <div class="press-card-title">Amazing space engineering research in action — Pitt Swanson School highlights SHREC satellite deployment</div>
+                  <div class="press-card-arrow">View post &rarr;</div>
+                </div>
+              </a>
+              <a class="press-card" href="https://www.ceidizleme.org/haberler/lisans-ogrencileri-yeryuzundeki-22-236-mil-yukarisinda-jeosenkron-uyduya-basvurular-konuslandiriyor/" target="_blank">
+                <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="Turkish article" />
+                <div class="press-card-body">
+                  <div class="press-card-source">CEID — Turkish Coverage</div>
+                  <div class="press-card-title">Lisans ogrencileri jeosenkron uyduya basvurular konuslandiriyor</div>
+                  <div class="press-card-arrow">Read article &rarr;</div>
+                </div>
+              </a>
+            </div>
+            <div class="carousel-nav">
+              <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:-280,behavior:'smooth'})">&lsaquo;</button>
+              <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:280,behavior:'smooth'})">&rsaquo;</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ═══ SENIOR DESIGN ═══ -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Spring 2025</div>
         <div class="project-card">
           <div class="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/GP5hdC5hYSc"
-              title="Chess-Playing Robot Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/GP5hdC5hYSc" title="Chess Robot" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="project-body">
             <h3>Chess-Playing Robot</h3>
             <div class="subtitle">Senior Design Project — University of Pittsburgh</div>
-            <p>Built an autonomous chess-playing robot that integrates the Stockfish AI engine with a 5-DOF robotic arm. Designed and programmed a custom 64-sensor I2C detection board achieving 95% move-detection accuracy. The system reads the physical board state, computes the optimal move, and executes it using inverse kinematics and servo control.</p>
+            <p>Built an autonomous chess-playing robot integrating the Stockfish AI engine with a 5-DOF robotic arm. Designed and programmed a custom 64-sensor I2C detection board achieving 95% move-detection accuracy.</p>
             <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">OpenCV</span>
-              <span class="tag">Raspberry Pi</span>
-              <span class="tag">I2C</span>
-              <span class="tag">Robotics</span>
-              <span class="tag">Stockfish</span>
+              <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Raspberry Pi</span>
+              <span class="tag">I2C</span><span class="tag">Robotics</span><span class="tag">Stockfish</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/nischalkharel/ChessPlayingRobot" target="_blank">GitHub</a>
@@ -822,28 +502,20 @@
         </div>
       </div>
 
-      <!-- ═══ JUNIOR DESIGN ═══ -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-date">Spring 2024</div>
         <div class="project-card">
           <div class="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/d4gQ43oSGQA"
-              title="Robotic Arm Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/d4gQ43oSGQA" title="Robotic Arm" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="project-body">
             <h3>Robotic Arm</h3>
             <div class="subtitle">Junior Design Project — University of Pittsburgh</div>
-            <p>Designed and built a multi-degree-of-freedom robotic arm with servo-driven joints. The project covered mechanical design, embedded programming, and real-time control, providing the foundation for the senior design chess robot that followed.</p>
+            <p>Designed and built a multi-degree-of-freedom robotic arm with servo-driven joints. Covered mechanical design, embedded programming, and real-time control.</p>
             <div class="tags">
-              <span class="tag">Embedded Systems</span>
-              <span class="tag">Servo Control</span>
-              <span class="tag">Mechanical Design</span>
-              <span class="tag">C++</span>
+              <span class="tag">Embedded Systems</span><span class="tag">Servo Control</span>
+              <span class="tag">Mechanical Design</span><span class="tag">C++</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/nischalkharel/RoboticArm" target="_blank">GitHub</a>
@@ -855,195 +527,92 @@
 
     </div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label">Expertise</div>
-    <h2 class="section-title">Technical Skills</h2>
+  <!-- ════════════ SKILLS TAB ════════════ -->
+  <div class="tab-panel" id="tab-skills">
     <div class="skills-grid">
       <div class="skill-card">
-        <h4>Hardware & Embedded</h4>
+        <h4>Hardware &amp; Embedded</h4>
         <p>Xilinx ZCU102 FPGA, NVIDIA Jetson (Orin NX, Orin Nano), Raspberry Pi, VHDL, I2C, SPI, SmartSat SDK, servo control, sensor interfacing</p>
       </div>
       <div class="skill-card">
-        <h4>Machine Learning & AI</h4>
-        <p>PyTorch, TensorFlow, LibTorch, RemoteCLIP, few-shot learning (ProtoNet, DPGN, LaplacianShot), fault injection (PyTorchFI), computer vision</p>
+        <h4>Machine Learning &amp; AI</h4>
+        <p>PyTorch, TensorFlow, LibTorch, RemoteCLIP, few-shot learning, fault injection (PyTorchFI), computer vision, CNN classification</p>
       </div>
       <div class="skill-card">
-        <h4>Software & HPC</h4>
+        <h4>Software &amp; HPC</h4>
         <p>C++, Python, C, OpenMP, CUDA, cuBLAS, SLURM, CMake, Docker, Git, Linux, parallel computing, NUMA-aware optimization</p>
       </div>
       <div class="skill-card">
-        <h4>Cloud & Backend</h4>
+        <h4>Cloud &amp; Backend</h4>
         <p>C#, .NET, Azure, CI/CD, REST APIs, distributed systems, agile development</p>
       </div>
     </div>
   </div>
-</section>
 
-<!-- COURSEWORK -->
-<section>
-  <div class="container">
-    <div class="section-label">Academics</div>
-    <h2 class="section-title">Selected Coursework</h2>
+  <!-- ════════════ COURSEWORK TAB ════════════ -->
+  <div class="tab-panel" id="tab-coursework">
     <div class="course-grid">
 
       <div class="course-group">
         <h4>Graduate — Current</h4>
-        <div class="course-item">
-          <span class="course-name">Robotic Control <span class="course-grad">IN PROGRESS</span></span>
-          <span class="course-code">ECE 2570</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Parallel Systems <span class="course-grad">IN PROGRESS</span></span>
-          <span class="course-code">ECE 2166</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Intro to Space Engineering</span>
-          <span class="course-code">ECE 2073</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Dependable Systems</span>
-          <span class="course-code">ECE 2165</span>
-        </div>
+        <div class="course-item"><span class="course-name">Robotic Control <span class="course-grad">IN PROGRESS</span></span><span class="course-code">ECE 2570</span></div>
+        <div class="course-item"><span class="course-name">Parallel Systems <span class="course-grad">IN PROGRESS</span></span><span class="course-code">ECE 2166</span></div>
+        <div class="course-item"><span class="course-name">Intro to Space Engineering</span><span class="course-code">ECE 2073</span></div>
+        <div class="course-item"><span class="course-name">Dependable Systems</span><span class="course-code">ECE 2165</span></div>
       </div>
 
       <div class="course-group">
-        <h4>Hardware & Embedded</h4>
-        <div class="course-item">
-          <span class="course-name">Advanced Digital Design</span>
-          <span class="course-code">ECE 1195</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Embedded Systems Design</span>
-          <span class="course-code">ECE 1175</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Embedded Processors & Interfaces</span>
-          <span class="course-code">ECE 0202</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Computer Org & Architecture</span>
-          <span class="course-code">ECE 1110</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Microelectronic Circuits</span>
-          <span class="course-code">ECE 0102</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Linear Circuits & Systems</span>
-          <span class="course-code">ECE 0101</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Digital Circuits & Systems</span>
-          <span class="course-code">ECE 0201</span>
-        </div>
+        <h4>Hardware &amp; Embedded</h4>
+        <div class="course-item"><span class="course-name">Advanced Digital Design</span><span class="course-code">ECE 1195</span></div>
+        <div class="course-item"><span class="course-name">Embedded Systems Design</span><span class="course-code">ECE 1175</span></div>
+        <div class="course-item"><span class="course-name">Embedded Processors &amp; Interfaces</span><span class="course-code">ECE 0202</span></div>
+        <div class="course-item"><span class="course-name">Computer Org &amp; Architecture</span><span class="course-code">ECE 1110</span></div>
+        <div class="course-item"><span class="course-name">Microelectronic Circuits</span><span class="course-code">ECE 0102</span></div>
+        <div class="course-item"><span class="course-name">Linear Circuits &amp; Systems</span><span class="course-code">ECE 0101</span></div>
+        <div class="course-item"><span class="course-name">Digital Circuits &amp; Systems</span><span class="course-code">ECE 0201</span></div>
       </div>
 
       <div class="course-group">
-        <h4>Software & Systems</h4>
-        <div class="course-item">
-          <span class="course-name">Cyber-Physical Systems</span>
-          <span class="course-code">ECE 1188</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Information Security</span>
-          <span class="course-code">ECE 1155</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Computer Networks</span>
-          <span class="course-code">ECE 1150</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Software Construction & Evolution</span>
-          <span class="course-code">ECE 1145</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Algorithmic Thinking</span>
-          <span class="course-code">ECE 1148</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Data Structures & Algorithms</span>
-          <span class="course-code">ECE 0302</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Systems & Project Engineering</span>
-          <span class="course-code">ECE 1140</span>
-        </div>
+        <h4>Software &amp; Systems</h4>
+        <div class="course-item"><span class="course-name">Cyber-Physical Systems</span><span class="course-code">ECE 1188</span></div>
+        <div class="course-item"><span class="course-name">Information Security</span><span class="course-code">ECE 1155</span></div>
+        <div class="course-item"><span class="course-name">Computer Networks</span><span class="course-code">ECE 1150</span></div>
+        <div class="course-item"><span class="course-name">Software Construction &amp; Evolution</span><span class="course-code">ECE 1145</span></div>
+        <div class="course-item"><span class="course-name">Algorithmic Thinking</span><span class="course-code">ECE 1148</span></div>
+        <div class="course-item"><span class="course-name">Data Structures &amp; Algorithms</span><span class="course-code">ECE 0302</span></div>
+        <div class="course-item"><span class="course-name">Systems &amp; Project Engineering</span><span class="course-code">ECE 1140</span></div>
       </div>
 
       <div class="course-group">
-        <h4>ML, Vision & Signals</h4>
-        <div class="course-item">
-          <span class="course-name">Image Processing & Computer Vision</span>
-          <span class="course-code">ECE 2390</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Signals, Systems & Probability</span>
-          <span class="course-code">ECE 0402</span>
-        </div>
+        <h4>ML, Vision &amp; Signals</h4>
+        <div class="course-item"><span class="course-name">Image Processing &amp; Computer Vision</span><span class="course-code">ECE 2390</span></div>
+        <div class="course-item"><span class="course-name">Signals, Systems &amp; Probability</span><span class="course-code">ECE 0402</span></div>
       </div>
 
       <div class="course-group">
-        <h4>Physics & Math</h4>
-        <div class="course-item">
-          <span class="course-name">Basic Physics for Sci & Engr 1</span>
-          <span class="course-code">PHYS 0174</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Basic Physics for Sci & Engr 2</span>
-          <span class="course-code">PHYS 0175</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Experience Undergrad Teaching <span class="course-grad">PHYSICS TA</span></span>
-          <span class="course-code">PHYS 1904</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">ECE Analytical Methods</span>
-          <span class="course-code">ECE 0401</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Applied Discrete Mathematics</span>
-          <span class="course-code">MATH 0480</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Analytic Geometry & Calculus 2</span>
-          <span class="course-code">MATH 0230</span>
-        </div>
+        <h4>Physics &amp; Math</h4>
+        <div class="course-item"><span class="course-name">Basic Physics for Sci &amp; Engr 1</span><span class="course-code">PHYS 0174</span></div>
+        <div class="course-item"><span class="course-name">Basic Physics for Sci &amp; Engr 2</span><span class="course-code">PHYS 0175</span></div>
+        <div class="course-item"><span class="course-name">Experience Undergrad Teaching <span class="course-grad">PHYSICS TA</span></span><span class="course-code">PHYS 1904</span></div>
+        <div class="course-item"><span class="course-name">ECE Analytical Methods</span><span class="course-code">ECE 0401</span></div>
+        <div class="course-item"><span class="course-name">Applied Discrete Mathematics</span><span class="course-code">MATH 0480</span></div>
+        <div class="course-item"><span class="course-name">Analytic Geometry &amp; Calculus 2</span><span class="course-code">MATH 0230</span></div>
       </div>
 
       <div class="course-group">
-        <h4>Design & Robotics</h4>
-        <div class="course-item">
-          <span class="course-name">Senior Design Project</span>
-          <span class="course-code">ECE 1896</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Junior Design Fundamentals</span>
-          <span class="course-code">ECE 1895</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">ECE Prototyping Fundamentals</span>
-          <span class="course-code">ECE 1890</span>
-        </div>
-        <div class="course-item">
-          <span class="course-name">Intro to Mechanical Engr Design</span>
-          <span class="course-code">MEMS 0024</span>
-        </div>
+        <h4>Design &amp; Robotics</h4>
+        <div class="course-item"><span class="course-name">Senior Design Project</span><span class="course-code">ECE 1896</span></div>
+        <div class="course-item"><span class="course-name">Junior Design Fundamentals</span><span class="course-code">ECE 1895</span></div>
+        <div class="course-item"><span class="course-name">ECE Prototyping Fundamentals</span><span class="course-code">ECE 1890</span></div>
+        <div class="course-item"><span class="course-name">Intro to Mechanical Engr Design</span><span class="course-code">MEMS 0024</span></div>
       </div>
 
     </div>
   </div>
-</section>
 
-<!-- EDUCATION & EXPERIENCE -->
-<section>
-  <div class="container">
-    <div class="section-label">Background</div>
-    <h2 class="section-title">Education & Experience</h2>
-
+  <!-- ════════════ EDUCATION TAB ════════════ -->
+  <div class="tab-panel" id="tab-education">
     <div class="timeline">
 
       <div class="timeline-item active">
@@ -1051,7 +620,7 @@
         <div class="timeline-date">2025 — 2030 (Expected)</div>
         <div class="project-card">
           <div class="project-body">
-            <h3>Ph.D. in Electrical & Computer Engineering</h3>
+            <h3>Ph.D. in Electrical &amp; Computer Engineering</h3>
             <div class="subtitle">University of Pittsburgh — GPA: 4.00</div>
             <p>Graduate Research Assistant at the NSF SHREC Center. NSF SHREC Graduate Fellowship recipient. Graduate Certificate in Space Engineering. Research focus: dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
           </div>
@@ -1064,7 +633,7 @@
         <div class="project-card">
           <div class="project-body">
             <h3>B.S. in Computer Engineering, Summa Cum Laude</h3>
-            <div class="subtitle">University of Pittsburgh</div>
+            <div class="subtitle">University of Pittsburgh — GPA: 3.938</div>
             <p>Swanson School of Engineering. Coursework spanning hardware, embedded systems, computer vision, signals, and security.</p>
           </div>
         </div>
@@ -1084,35 +653,28 @@
 
     </div>
   </div>
-</section>
 
-
-<!-- CONTACT -->
-<section id="contact" style="background: var(--surface); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label">Reach Out</div>
-    <h2 class="section-title">Contact</h2>
+  <!-- ════════════ CONTACT TAB ════════════ -->
+  <div class="tab-panel" id="tab-contact">
     <p style="color: var(--text-secondary); max-width: 520px; margin-bottom: 1.2rem;">I'm always open to discussing research collaborations, space computing, or new opportunities.</p>
     <div class="contact-row">
-      <a href="#" onclick="document.getElementById('contactModal').classList.add('active');return false;">Email</a>
+      <a onclick="document.getElementById('contactModal').classList.add('active')">Email</a>
       <a href="https://github.com/nischalkharel" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/nischalkharel/" target="_blank">LinkedIn</a>
       <a href="https://www.nsf-shrec.org/people/nischal-kharel" target="_blank">SHREC</a>
     </div>
   </div>
-</section>
 
-<footer>
-  &copy; 2026 Nischal Kharel. Built in Pittsburgh.
-</footer>
+</div>
+
+<footer>&copy; 2026 Nischal Kharel. Built in Pittsburgh.</footer>
 
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('active')" aria-label="Close">&times;</button>
+    <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('active')">&times;</button>
     <h3>Get in Touch</h3>
     <p class="modal-sub">Feel free to reach out through any of the following.</p>
-
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">Personal</div>
@@ -1120,7 +682,6 @@
       </div>
       <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nischalkharel2002@gmail.com');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
-
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">School</div>
@@ -1128,7 +689,6 @@
       </div>
       <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nik96@pitt.edu');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
-
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">SHREC</div>
@@ -1138,6 +698,22 @@
     </div>
   </div>
 </div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.textContent.toLowerCase().replace(/[^a-z]/g,'').startsWith(name.replace('education','education')))
+      b.classList.add('active');
+  });
+  // simpler: match by onclick
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.getAttribute('onclick') === "switchTab('" + name + "')") b.classList.add('active');
+  });
+}
+</script>
 
 </body>
 </html>
