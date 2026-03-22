@@ -458,6 +458,100 @@
     nav .links { display: none; }
     .hero-text h1 { font-size: 1.8rem; }
   }
+  /* ── CONTACT MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.2rem 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    animation: modalIn 0.25s ease;
+    position: relative;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+  .modal-box .modal-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.4rem;
+  }
+  .modal-email-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-email-row:last-child { border-bottom: none; }
+  .modal-email-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  .modal-email-addr {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .modal-copy-btn {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .modal-copy-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: var(--accent-light); color: var(--accent); }
 </style>
 </head>
 <body>
@@ -480,7 +574,7 @@
     <h1>Researcher, Engineer, <span>Builder.</span></h1>
     <p>Ph.D. student in Electrical & Computer Engineering at the University of Pittsburgh. Graduate Research Assistant at the NSF SHREC Center, working on dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
     <div class="hero-links">
-      <a href="/cdn-cgi/l/email-protection#7e10170d1d161f1215161f0c1b124c4e4e4c3e19131f1712501d1113" class="primary">Get in Touch</a>
+      <a href="#" onclick="document.getElementById('contactModal').classList.add('active');return false;" class="primary">Get in Touch</a>
       <a href="https://github.com/nischalkharel" class="secondary" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/nischalkharel/" class="secondary" target="_blank">LinkedIn</a>
       <a href="https://www.nsf-shrec.org/people/nischal-kharel" class="secondary" target="_blank">SHREC Profile</a>
@@ -791,7 +885,50 @@
     <h2 class="section-title">Contact</h2>
     <p style="color: var(--text-secondary); max-width: 520px; margin-bottom: 1.2rem;">I'm always open to discussing research collaborations, space computing, or new opportunities.</p>
     <div class="contact-row">
-      <a href="/cdn-cgi/l/email-protection#6d03041e0e050c0106050c1f08015f5d5d5f2d0a000c0401430e0200">Email</a>
+      <a href="#" onclick="document.getElementById('contactModal').classList.add('active');return false;">Email</a>
       <a href="https://github.com/nischalkharel" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/nischalkharel/" target="_blank">LinkedIn</a>
-      <a 
+      <a href="https://www.nsf-shrec.org/people/nischal-kharel" target="_blank">SHREC</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Nischal Kharel. Built in Pittsburgh.
+</footer>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('active')" aria-label="Close">&times;</button>
+    <h3>Get in Touch</h3>
+    <p class="modal-sub">Feel free to reach out through any of the following.</p>
+
+    <div class="modal-email-row">
+      <div>
+        <div class="modal-email-label">Personal</div>
+        <div class="modal-email-addr">nischalkharel2002@gmail.com</div>
+      </div>
+      <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nischalkharel2002@gmail.com');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    </div>
+
+    <div class="modal-email-row">
+      <div>
+        <div class="modal-email-label">School</div>
+        <div class="modal-email-addr">nik96@pitt.edu</div>
+      </div>
+      <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nik96@pitt.edu');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    </div>
+
+    <div class="modal-email-row">
+      <div>
+        <div class="modal-email-label">SHREC</div>
+        <div class="modal-email-addr">nischal.kharel@chrec.org</div>
+      </div>
+      <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nischal.kharel@chrec.org');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
