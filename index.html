@@ -458,6 +458,59 @@
     nav .links { display: none; }
     .hero-text h1 { font-size: 1.8rem; }
   }
+  /* ── COURSEWORK ── */
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.4rem;
+  }
+  .course-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .course-group h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+  }
+  .course-name {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .course-code {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-family: 'DM Sans', monospace;
+    white-space: nowrap;
+    margin-left: 12px;
+  }
+  .course-grad {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--accent-light);
+    color: var(--accent);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
   /* ── CONTACT MODAL ── */
   .modal-overlay {
     display: none;
@@ -830,6 +883,161 @@
   </div>
 </section>
 
+<!-- COURSEWORK -->
+<section>
+  <div class="container">
+    <div class="section-label">Academics</div>
+    <h2 class="section-title">Selected Coursework</h2>
+    <div class="course-grid">
+
+      <div class="course-group">
+        <h4>Graduate — Current</h4>
+        <div class="course-item">
+          <span class="course-name">Robotic Control <span class="course-grad">IN PROGRESS</span></span>
+          <span class="course-code">ECE 2570</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Parallel Systems <span class="course-grad">IN PROGRESS</span></span>
+          <span class="course-code">ECE 2166</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Intro to Space Engineering</span>
+          <span class="course-code">ECE 2073</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Dependable Systems</span>
+          <span class="course-code">ECE 2165</span>
+        </div>
+      </div>
+
+      <div class="course-group">
+        <h4>Hardware & Embedded</h4>
+        <div class="course-item">
+          <span class="course-name">Advanced Digital Design</span>
+          <span class="course-code">ECE 1195</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Embedded Systems Design</span>
+          <span class="course-code">ECE 1175</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Embedded Processors & Interfaces</span>
+          <span class="course-code">ECE 0202</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Computer Org & Architecture</span>
+          <span class="course-code">ECE 1110</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Microelectronic Circuits</span>
+          <span class="course-code">ECE 0102</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Linear Circuits & Systems</span>
+          <span class="course-code">ECE 0101</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Digital Circuits & Systems</span>
+          <span class="course-code">ECE 0201</span>
+        </div>
+      </div>
+
+      <div class="course-group">
+        <h4>Software & Systems</h4>
+        <div class="course-item">
+          <span class="course-name">Cyber-Physical Systems</span>
+          <span class="course-code">ECE 1188</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Information Security</span>
+          <span class="course-code">ECE 1155</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Computer Networks</span>
+          <span class="course-code">ECE 1150</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Software Construction & Evolution</span>
+          <span class="course-code">ECE 1145</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Algorithmic Thinking</span>
+          <span class="course-code">ECE 1148</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Data Structures & Algorithms</span>
+          <span class="course-code">ECE 0302</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Systems & Project Engineering</span>
+          <span class="course-code">ECE 1140</span>
+        </div>
+      </div>
+
+      <div class="course-group">
+        <h4>ML, Vision & Signals</h4>
+        <div class="course-item">
+          <span class="course-name">Image Processing & Computer Vision</span>
+          <span class="course-code">ECE 2390</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Signals, Systems & Probability</span>
+          <span class="course-code">ECE 0402</span>
+        </div>
+      </div>
+
+      <div class="course-group">
+        <h4>Physics & Math</h4>
+        <div class="course-item">
+          <span class="course-name">Basic Physics for Sci & Engr 1</span>
+          <span class="course-code">PHYS 0174</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Basic Physics for Sci & Engr 2</span>
+          <span class="course-code">PHYS 0175</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Experience Undergrad Teaching <span class="course-grad">PHYSICS TA</span></span>
+          <span class="course-code">PHYS 1904</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">ECE Analytical Methods</span>
+          <span class="course-code">ECE 0401</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Applied Discrete Mathematics</span>
+          <span class="course-code">MATH 0480</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Analytic Geometry & Calculus 2</span>
+          <span class="course-code">MATH 0230</span>
+        </div>
+      </div>
+
+      <div class="course-group">
+        <h4>Design & Robotics</h4>
+        <div class="course-item">
+          <span class="course-name">Senior Design Project</span>
+          <span class="course-code">ECE 1896</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Junior Design Fundamentals</span>
+          <span class="course-code">ECE 1895</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">ECE Prototyping Fundamentals</span>
+          <span class="course-code">ECE 1890</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Intro to Mechanical Engr Design</span>
+          <span class="course-code">MEMS 0024</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION & EXPERIENCE -->
 <section>
   <div class="container">
@@ -857,7 +1065,7 @@
           <div class="project-body">
             <h3>B.S. in Computer Engineering, Summa Cum Laude</h3>
             <div class="subtitle">University of Pittsburgh</div>
-            <p>Relevant coursework: Dependable Systems, Computer Architecture, Embedded Systems, Computer Vision and Image Processing.</p>
+            <p>Swanson School of Engineering. Coursework spanning hardware, embedded systems, computer vision, signals, and security.</p>
           </div>
         </div>
       </div>
@@ -877,6 +1085,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- CONTACT -->
 <section id="contact" style="background: var(--surface); border-top: 1px solid var(--border);">
@@ -907,7 +1116,7 @@
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">Personal</div>
-        <div class="modal-email-addr">nischalkharel2002@gmail.com</div>
+        <div class="modal-email-addr">nischalkharel2002&#64;gmail.com</div>
       </div>
       <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nischalkharel2002@gmail.com');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
@@ -915,7 +1124,7 @@
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">School</div>
-        <div class="modal-email-addr">nik96@pitt.edu</div>
+        <div class="modal-email-addr">nik96&#64;pitt.edu</div>
       </div>
       <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nik96@pitt.edu');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
@@ -923,7 +1132,7 @@
     <div class="modal-email-row">
       <div>
         <div class="modal-email-label">SHREC</div>
-        <div class="modal-email-addr">nischal.kharel@chrec.org</div>
+        <div class="modal-email-addr">nischal.kharel&#64;chrec.org</div>
       </div>
       <button class="modal-copy-btn" onclick="navigator.clipboard.writeText('nischal.kharel@chrec.org');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
     </div>
