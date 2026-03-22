@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nischal Kharel — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-secondary: #5A5A5A;
+    --accent: #003594;
+    --accent-light: #E8EDF5;
+    --gold: #CDB87D;
+    --border: #E8E8E4;
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+  }
+  nav .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  nav .links { display: flex; gap: 1.8rem; }
+  nav .links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  nav .links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 140px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.2rem;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+  }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-text p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 1.6rem;
+  }
+  .hero-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .hero-links a.primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .hero-links a.primary:hover { background: #00254a; }
+  .hero-links a.secondary {
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    background: var(--surface);
+  }
+  .hero-links a.secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .hero-photo {
+    width: 280px;
+    height: 340px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  /* ── SECTION LAYOUT ── */
+  section { padding: 60px 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 3.5rem;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--accent);
+    z-index: 1;
+  }
+  .timeline-item.active .timeline-dot {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-light);
+  }
+
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .project-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border-color: #d0d0cc;
+  }
+
+  .project-body { padding: 1.8rem; }
+  .project-body h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .project-body .subtitle {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .project-body p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--accent-light);
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .project-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .project-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .project-links a:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── VIDEO EMBED ── */
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #000;
+    border-bottom: 1px solid var(--border);
+  }
+  .video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ── PRESS CAROUSEL ── */
+  .press-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .press-carousel-wrapper {
+    position: relative;
+  }
+  .press-carousel {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .press-carousel::-webkit-scrollbar { display: none; }
+
+  .press-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+  }
+  .press-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(0,53,148,0.08);
+    transform: translateY(-2px);
+  }
+  .press-card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    background: var(--accent-light);
+  }
+  .press-card-body { padding: 12px 14px; }
+  .press-card-source {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .press-card-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .press-card-arrow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .carousel-nav {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+  .carousel-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── SKILLS TABLE ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: box-shadow 0.25s;
+  }
+  .skill-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+  .skill-card h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .skill-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .contact-row a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .contact-row a:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 120px 1.5rem 50px;
+    }
+    .hero-photo {
+      width: 200px;
+      height: 240px;
+      order: -1;
+    }
+    .hero-text h1 { font-size: 2.2rem; }
+    nav .links { gap: 1rem; }
+    nav .links a { font-size: 0.72rem; }
+    section { padding: 40px 1.5rem; }
+    .section-title { font-size: 1.6rem; }
+  }
+
+  @media (max-width: 500px) {
+    nav .links { display: none; }
+    .hero-text h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">Nischal Kharel</a>
+    <div class="links">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <h1>Researcher, Engineer, <span>Builder.</span></h1>
+    <p>Ph.D. student in Electrical & Computer Engineering at the University of Pittsburgh. Graduate Research Assistant at the NSF SHREC Center, working on dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
+    <div class="hero-links">
+      <a href="/cdn-cgi/l/email-protection#6d03041e0e050c0106050c1f08015f5d5d5f2d0a000c0401430e0200" class="primary">Get in Touch</a>
+      <a href="https://github.com/nischalkharel" class="secondary" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/nischalkharel/" class="secondary" target="_blank">LinkedIn</a>
+      <a href="https://www.nsf-shrec.org/people/nischal-kharel" class="secondary" target="_blank">SHREC Profile</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="https://www.nsf-shrec.org/sites/default/files/styles/person_image/public/IMG_3586.jpeg?h=8a5867f4&itok=yZRaW6OO" alt="Nischal Kharel" />
+  </div>
+</header>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="timeline">
+
+      <!-- ═══ CURRENT: RemoteCLIP ═══ -->
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Spring 2026 — Present</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>RemoteCLIP Video Retrieval Pipeline</h3>
+            <div class="subtitle">Graduate Research — NSF SHREC Center</div>
+            <p>High-performance text-based video retrieval system for satellite and remote sensing footage. Built a parallel C++ embedding pipeline using LibTorch and OpenMP with a producer-consumer architecture, and benchmarked brute-force kNN retrieval across serial CPU, parallel CPU (OpenMP), and GPU (cuBLAS) backends. Key findings include NUMA-aware scaling achieving ~38× speedup, GPU warm search ~185× faster than serial, and a publishable result showing GPU cold-start end-to-end is slower than CPU serial due to CUDA initialization and PCIe overhead — significant for latency-sensitive edge and space deployments. GSI Gemini II APU benchmarking is currently in progress.</p>
+            <div class="tags">
+              <span class="tag">C++</span>
+              <span class="tag">LibTorch</span>
+              <span class="tag">OpenMP</span>
+              <span class="tag">CUDA</span>
+              <span class="tag">cuBLAS</span>
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">HPC</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nischalkharel/VideoRetrievalWithRemoteCLIP/tree/RemoteCLIP_Initial_try" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ CURRENT: Few-Shot Learning ═══ -->
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Spring 2026 — Present</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>Cross-Domain Few-Shot Learning for Remote Sensing</h3>
+            <div class="subtitle">Graduate Research — University of Pittsburgh</div>
+            <p>Evaluating few-shot learning algorithms (Prototypical Networks, LaplacianShot, DPGN) for satellite imagery classification with a ResNet50 backbone. Three-pronged evaluation framework: intra-dataset, same-domain cross-dataset (NWPU-RESISC45 → PatternNet), and cross-domain transfer from optical to SAR imagery using SAR-OpenEarthMap.</p>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">Few-Shot Learning</span>
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">ResNet50</span>
+              <span class="tag">SAR</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nischalkharel/3998_Spring2026" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ FALL 2025: Fault Tolerance ═══ -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Fall 2025</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>Fault Tolerance for GPU-Accelerated Neural Networks in Space</h3>
+            <div class="subtitle">Graduate Research — NSF SHREC Center</div>
+            <p>Evaluated software fault tolerance techniques — Triple Modular Redundancy (TMR), Dual+Retry, and Algorithm-Based Fault Tolerance (ABFT) — for neural networks on NVIDIA Jetson hardware targeting space radiation environments. Used PyTorchFI for fault injection after NVBitFI proved incompatible with SM_87 architecture. Key finding: Dual+Retry achieved 0% silent data corruption with 34% better efficiency than TMR. Co-authored a paper on the results.</p>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">NVIDIA Jetson</span>
+              <span class="tag">Fault Injection</span>
+              <span class="tag">PyTorchFI</span>
+              <span class="tag">Space Computing</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nischalkharel/RemoteObjectDetectionModelWithFaultTolerantTechniques" target="_blank">GitHub</a>
+              <a href="https://github.com/nischalkharel/RemoteObjectDetectionModelWithFaultTolerantTechniques/blob/main/Final_DS_Paper.pdf" target="_blank">Paper (PDF)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ LINUSS ═══ -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Spring 2025 — 2026</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>CNNJPEG on LM LINUSS CubeSat</h3>
+            <div class="subtitle">NSF SHREC Center &times; Lockheed Martin</div>
+            <p>Optimized a CNN-based image compression model (CNNJPEG) for the Xilinx ZCU102 FPGA under severe memory constraints, implementing dynamic tiling and quantization to maintain 20× compression while reducing memory usage by 70%. Collaborated with Lockheed Martin to package and deploy the application to the LM LINUSS CubeSat in geosynchronous orbit, 22,236 miles above Earth. As of 2026, the application has been successfully tested on the actual LINUSS satellite in orbit.</p>
+            <div class="tags">
+              <span class="tag">FPGA</span>
+              <span class="tag">Xilinx ZCU102</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">SmartSat SDK</span>
+              <span class="tag">VHDL</span>
+              <span class="tag">Lockheed Martin</span>
+            </div>
+
+            <p class="press-label">Press Coverage</p>
+            <div class="press-carousel-wrapper">
+              <div class="press-carousel" id="pressCarousel">
+
+                <a class="press-card" href="https://news.engineering.pitt.edu/an-out-of-this-world-opportunity/" target="_blank">
+                  <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="SHREC team in lab" />
+                  <div class="press-card-body">
+                    <div class="press-card-source">Pitt Engineering</div>
+                    <div class="press-card-title">An Out of This World Opportunity — For the first time, two undergraduate Pitt engineering students develop and deploy applications on a satellite in geosynchronous orbit</div>
+                    <div class="press-card-arrow">Read article →</div>
+                  </div>
+                </a>
+
+                <a class="press-card" href="https://news.ssbcrack.com/university-of-pittsburgh-students-successfully-deploy-applications-to-geosynchronous-satellite-22236-miles-above-earth/" target="_blank">
+                  <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="Satellite deployment article" />
+                  <div class="press-card-body">
+                    <div class="press-card-source">SSBCrack News</div>
+                    <div class="press-card-title">University of Pittsburgh Students Successfully Deploy Applications to Geosynchronous Satellite 22,236 Miles Above Earth</div>
+                    <div class="press-card-arrow">Read article →</div>
+                  </div>
+                </a>
+
+                <a class="press-card" href="https://www.linkedin.com/posts/pittengineering_amazing-space-engineering-research-in-action-activity-7378415869246218242-g8la/" target="_blank">
+                  <img class="press-card-img" src="https://content.presspage.com/uploads/2602/2a95fcb9-b589-49f5-b6e6-aba64f5c7e00/1920_shrecgeosatellite.jpeg?10000" alt="Pitt Engineering LinkedIn post" />
+                  <div class="press-card-body">
+                    <div class="press-card-source">LinkedIn — Pitt Engineering</div>
+                    <div class="press-card-title">"Amazing space engineering research in action" — Pitt Swanson School of Engineering highlights SHREC satellite deployment</div>
+                    <div class="press-card-arrow">View post →</div>
+                  </div>
+                </a>
+
+                <a class="press-card" href="https://www.ceidizleme.org/haberler/lisans-ogrencileri-yeryuzundeki-22-236-mil-yukarisinda-jeosenkron-uyduya-basvurular-konuslandiriyor/" target="_blank">
+                  <img class="press-card-img" src="https://news.ssbcrack.com/wp-content/uploads/2025/10/University-of-Pittsburgh-Students-Successfully-Deploy-Applications-to-Geosynchronous-Satellite-860x572.jpg" alt="CEİD article" />
+                  <div class="press-card-body">
+                    <div class="press-card-source">CEİD — Turkish Coverage</div>
+                    <div class="press-card-title">Lisans öğrencileri, yeryüzündeki 22.236 mil yukarısında jeosenkron uyduya başvurular konuşlandırıyor</div>
+                    <div class="press-card-arrow">Read article →</div>
+                  </div>
+                </a>
+
+              </div>
+              <div class="carousel-nav">
+                <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:-300,behavior:'smooth'})" aria-label="Scroll left">‹</button>
+                <button class="carousel-btn" onclick="document.getElementById('pressCarousel').scrollBy({left:300,behavior:'smooth'})" aria-label="Scroll right">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SENIOR DESIGN ═══ -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Spring 2025</div>
+        <div class="project-card">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/GP5hdC5hYSc"
+              title="Chess-Playing Robot Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="project-body">
+            <h3>Chess-Playing Robot</h3>
+            <div class="subtitle">Senior Design Project — University of Pittsburgh</div>
+            <p>Built an autonomous chess-playing robot that integrates the Stockfish AI engine with a 5-DOF robotic arm. Designed and programmed a custom 64-sensor I2C detection board achieving 95% move-detection accuracy. The system reads the physical board state, computes the optimal move, and executes it using inverse kinematics and servo control.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">I2C</span>
+              <span class="tag">Robotics</span>
+              <span class="tag">Stockfish</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nischalkharel/ChessPlayingRobot" target="_blank">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=GP5hdC5hYSc" target="_blank">Video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ JUNIOR DESIGN ═══ -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Spring 2024</div>
+        <div class="project-card">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/d4gQ43oSGQA"
+              title="Robotic Arm Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="project-body">
+            <h3>Robotic Arm</h3>
+            <div class="subtitle">Junior Design Project — University of Pittsburgh</div>
+            <p>Designed and built a multi-degree-of-freedom robotic arm with servo-driven joints. The project covered mechanical design, embedded programming, and real-time control, providing the foundation for the senior design chess robot that followed.</p>
+            <div class="tags">
+              <span class="tag">Embedded Systems</span>
+              <span class="tag">Servo Control</span>
+              <span class="tag">Mechanical Design</span>
+              <span class="tag">C++</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nischalkharel/RoboticArm" target="_blank">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=d4gQ43oSGQA" target="_blank">Video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Hardware & Embedded</h4>
+        <p>Xilinx ZCU102 FPGA, NVIDIA Jetson (Orin NX, Orin Nano), Raspberry Pi, VHDL, I2C, SPI, SmartSat SDK, servo control, sensor interfacing</p>
+      </div>
+      <div class="skill-card">
+        <h4>Machine Learning & AI</h4>
+        <p>PyTorch, TensorFlow, LibTorch, RemoteCLIP, few-shot learning (ProtoNet, DPGN, LaplacianShot), fault injection (PyTorchFI), computer vision</p>
+      </div>
+      <div class="skill-card">
+        <h4>Software & HPC</h4>
+        <p>C++, Python, C, OpenMP, CUDA, cuBLAS, SLURM, CMake, Docker, Git, Linux, parallel computing, NUMA-aware optimization</p>
+      </div>
+      <div class="skill-card">
+        <h4>Cloud & Backend</h4>
+        <p>C#, .NET, Azure, CI/CD, REST APIs, distributed systems, agile development</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & EXPERIENCE -->
+<section>
+  <div class="container">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">Education & Experience</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025 — 2030 (Expected)</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>Ph.D. in Electrical & Computer Engineering</h3>
+            <div class="subtitle">University of Pittsburgh — GPA: 4.00</div>
+            <p>Graduate Research Assistant at the NSF SHREC Center. NSF SHREC Graduate Fellowship recipient. Graduate Certificate in Space Engineering. Research focus: dependable and energy-efficient machine learning for GPU-based edge and space systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2021 — 2025</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>B.S. in Computer Engineering, Summa Cum Laude</h3>
+            <div class="subtitle">University of Pittsburgh</div>
+            <p>Relevant coursework: Dependable Systems, Computer Architecture, Embedded Systems, Computer Vision and Image Processing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jan 2023 — Aug 2024</div>
+        <div class="project-card">
+          <div class="project-body">
+            <h3>Software Engineer Co-op</h3>
+            <div class="subtitle">GNC Holdings — Pittsburgh, PA</div>
+            <p>Developed scalable backend APIs using C# and .NET, integrating Azure cloud services. Implemented CI/CD pipelines for automated testing and deployment across distributed agile teams.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--surface); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Reach Out</div>
+    <h2 class="section-title">Contact</h2>
+    <p style="color: var(--text-secondary); max-width: 520px; margin-bottom: 1.2rem;">I'm always open to discussing research collaborations, space computing, or new opportunities.</p>
+    <div class="contact-row">
+      <a href="/cdn-cgi/l/email-protection#84eaedf7e7ece5e8efece5f6e1e8b6b4b4b6c4e3e9e5ede8aae7ebe9">Email</a>
+      <a href="https://github.com/nischalkharel" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/nischalkharel/" target="_blank">LinkedIn</a>
+      <a href="https://www.nsf-shrec.org/people/nischal-kharel" target="_blank">SHREC</a>
+    </div>
+  </div>
